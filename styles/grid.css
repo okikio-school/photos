@@ -1,0 +1,17 @@
+.grid {
+  gap: 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  padding: 1rem;
+
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+}

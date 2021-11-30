@@ -1,0 +1,10 @@
+<?php 
+/* 
+-- ALTER TABLE `friends` CHANGE `user` `userB` INT(11) NOT NULL;
+START TRANSACTION;
+ALTER TABLE `friends`
+  ADD CONSTRAINT `friends_A` FOREIGN KEY (`userA`) REFERENCES `users`
+(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+*/
+?>
