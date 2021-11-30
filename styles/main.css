@@ -1,3 +1,22 @@
-@import url("styles/base.css");
-@import url("styles/navbar.css");
-@import url("styles/grid.css");
+@import "./base.css";
+@import "./navbar.css";
+@import "./grid.css";
+
+:root {
+  --container-width: 1200px;
+  --accent: #ffb900;
+} 
+
+html {
+  /* color-scheme: dark light; */
+  font-family: "Lexend Deca", "Arial", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5em;
+}
+
+.container {
+  display: block;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 1rem;
+}

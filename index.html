@@ -1,71 +1,88 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Art Gallery</title>
-    <link rel="stylesheet" type="text/css" href="styles/main.css">
-  </head>
 
-  <body>
-    <nav class="navbar">
-      <div class="navbar-list">
+<head>
+  <title>Art Gallery</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+
+<body>
+  <nav>
+    <div class="navbar">
+      <div class="navbar-container">
         <a class="active" href="#home">Home</a>
         <a href="#about">About</a>
 
-        <form action="/login.php" class="login">
-          <input type="text" placeholder="Username" name="username">
-          <input type="text" placeholder="Password" name="psw">
-          <button type="submit">Login</button>
-        </form>
+        <div class="flex-grow"></div>
+
+        <!-- <form action="/login.php" class="login">
+            <input type="text" placeholder="Username" name="username">
+            <input type="text" placeholder="Password" name="psw">
+            <button type="submit">Login</button>
+          </form> -->
 
         <form action="/search.php" class="search">
           <input type="text" placeholder="Search..." name="search">
-          <button type="submit">Search</button>
+          <button type="submit" tabindex="-1">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10 2.5a7.5 7.5 0 0 1 5.964 12.048l4.743 4.745a1 1 0 0 1-1.32 1.497l-.094-.083-4.745-4.743A7.5 7.5 0 1 1 10 2.5Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Z"
+                fill="currentColor" />
+            </svg>
+          </button>
         </form>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <main>
-      <div class="container">
-        <h1>Grid</h1>
-        <div class="grid">
-          <img
-            src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05466_kwlv0n.jpg"
-            alt="A Toyota Previa covered in graffiti" loading="lazy">
-          <img
-            src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05621_zgtcco.jpg"
-            alt="Interesting living room light through a window" loading="lazy">
-          <img
-            src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05513_gfbiwi.jpg"
-            alt="Sara on a red bike" loading="lazy">
-          <img
-            src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05588_nb0dma.jpg"
-            alt="XOXO venue in between talks" loading="lazy">
-          <img
-            src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05459_ziuomy.jpg"
-            alt="Trees lit by green light during dusk" loading="lazy">
-          <img
-            src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05586_oj8jfo.jpg"
-            alt="Portrait of Justin Pervorse" loading="lazy">
-          <img
-            src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05465_dtkwef.jpg"
-            alt="Empty bike racks outside a hotel" loading="lazy">
-          <img
-            src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05626_ytsf3j.jpg"
-            alt="Heavy rain on an intersection" loading="lazy">
-          <img
-            src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05449_l9kukz.jpg"
-            alt="Payam Rajabi eating peanut chicken" loading="lazy">
-          <img
-            src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05544_aczrb9.jpg"
-            alt="Portland skyline sunset" loading="lazy">
-          <img
-            src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05447_mvffor.jpg"
-            alt="Interior at Nong's" loading="lazy">
-          <img
-            src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814784/photostream-photos/DSC05501_yirmq8.jpg"
-            alt="A kimchi hotdog on a plate" loading="lazy">
-        </div>
+  <main>
+    <div class="container">
+      <h1>Grid</h1>
+      <div class="grid">
+        <img
+          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05466_kwlv0n.jpg"
+          alt="A Toyota Previa covered in graffiti" loading="lazy">
+        <img
+          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05621_zgtcco.jpg"
+          alt="Interesting living room light through a window" loading="lazy">
+        <img
+          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05513_gfbiwi.jpg"
+          alt="Sara on a red bike" loading="lazy">
+        <img
+          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05588_nb0dma.jpg"
+          alt="XOXO venue in between talks" loading="lazy">
+        <img
+          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05459_ziuomy.jpg"
+          alt="Trees lit by green light during dusk" loading="lazy">
+        <img
+          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05586_oj8jfo.jpg"
+          alt="Portrait of Justin Pervorse" loading="lazy">
+        <img
+          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05465_dtkwef.jpg"
+          alt="Empty bike racks outside a hotel" loading="lazy">
+        <img
+          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05626_ytsf3j.jpg"
+          alt="Heavy rain on an intersection" loading="lazy">
+        <img
+          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05449_l9kukz.jpg"
+          alt="Payam Rajabi eating peanut chicken" loading="lazy">
+        <img
+          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05544_aczrb9.jpg"
+          alt="Portland skyline sunset" loading="lazy">
+        <img
+          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05447_mvffor.jpg"
+          alt="Interior at Nong's" loading="lazy">
+        <img
+          src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814784/photostream-photos/DSC05501_yirmq8.jpg"
+          alt="A kimchi hotdog on a plate" loading="lazy">
       </div>
-    </main>
-  </body>
+    </div>
+  </main>
+</body>
+
 </html>
