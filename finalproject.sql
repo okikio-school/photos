@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `images` (
   `name` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `url` varchar(1000) NOT NULL,
-  `likes` int(11) NOT NULL,
+  `likes` int(11) NOT NULL DEFAULT '0',
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `images` (`user_id`)
