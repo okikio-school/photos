@@ -10,37 +10,39 @@
         $User_A = $pdo->quote($_COOKIE["user_id"]);
         $User_B = $pdo->quote($_POST["userB"]);
         
-        # Check if the user_id from the cookie is already present in the `users` table
-        $sql = "SELECT * FROM friends WHERE userA = " . $User_A . " AND userB = " . $User_B;
-        $statement = $pdo->query($sql);
-        
-        # If the user_id is present in the `users` table then the iser is already logged in
-        if ($result = $statement->fetch()):
-            $sql = "DELETE FROM friends WHERE userA = " . $User_A . " AND userB = " . $User_B;
-        else:
-            $sql = "INSERT INTO friends (userA, userB) VALUES (?, ?)";
+        if ($User_A !== $User_B): 
+            # Check if the user_id from the cookie is already present in the `users` table
+            $sql = "SELECT * FROM friends WHERE userA = " . $User_A . " AND userB = " . $User_B;
+            $statement = $pdo->query($sql);
+            
+            # If the user_id is present in the `users` table then the iser is already logged in
+            if ($result = $statement->fetch()):
+                $sql = "DELETE FROM friends WHERE userA = " . $User_A . " AND userB = " . $User_B;
+            else:
+                $sql = "INSERT INTO friends (userA, userB) VALUES (?, ?)";
+            endif;
+
+            # Begin Transaction
+            $pdo->beginTransaction();
+
+            $statement = $pdo->prepare($sql);
+
+            # Use user info. from the form in sql query
+            $statement->bindValue(1, $_COOKIE["user_id"]);
+            $statement->bindValue(2, $_POST["userB"]);
+
+            # Run prepared sql query
+            $statement->execute();
+
+            # Commit Transaction
+            $pdo->commit();
+
+            # Garbage collect the statement
+            $statement = null;
+
+            # Disconnect from database
+            $pdo = null;
         endif;
-
-        # Begin Transaction
-        $pdo->beginTransaction();
-
-        $statement = $pdo->prepare($sql);
-
-        # Use user info. from the form in sql query
-        $statement->bindValue(1, $_COOKIE["user_id"]);
-        $statement->bindValue(2, $_POST["userB"]);
-
-        # Run prepared sql query
-        $statement->execute();
-
-        # Commit Transaction
-        $pdo->commit();
-
-        # Garbage collect the statement
-        $statement = null;
-
-        # Disconnect from database
-        $pdo = null;
     } catch (PDOException $e) {
         die($e->getMessage());
     }

@@ -31,7 +31,7 @@
                 echo '<br>';
 
                 # Check if the user_id `images` table
-                $sql = "SELECT * FROM images WHERE name = " . $query;
+                $sql = 'SELECT * FROM images WHERE name LIKE "%' . $_GET['search'] . '%" OR description LIKE "%' . $_GET['search'] . '%"';
                 $statement = $pdo->query($sql);
                 
                 # If the user_id is present in the `users` table then the iser is already logged in
@@ -56,7 +56,7 @@
                 echo '<br>';
 
                 # Check if the user_id `images` table
-                $sql = "SELECT * FROM users WHERE name = " . $query;
+                $sql = 'SELECT * FROM users WHERE name LIKE "%' . $_GET['search'] . '%" OR email LIKE "%' . $_GET['search'] . '%"';
                 $statement = $pdo->query($sql);
                 
                 # If the user_id is present in the `users` table then the iser is already logged in

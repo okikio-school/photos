@@ -15,12 +15,12 @@
 
       <h1 class="font-serif">About Our Project</h1>
       <p> By: Okiki Ojo, Steven Mai, Kramptj KC, Tazrian Tarfee </p>
-      <br>  
-      <hr />
+      <!-- <br>   -->
+      <!-- <hr /> -->
       <br>  
       <br>  
 
-      <h3 class="font-600 font-serif"> What is it? </h3>
+      <h3 class="font-700 font-serif"> What is it? </h3>
       <div class="first_p">
         <p> We are making an Art Gallery System that allows for multiple users to upload images to Cloudinary (an online
           image storage provider) and uses SQL databases to store the metadata about the images as well as a separate
@@ -33,7 +33,7 @@
       <br>  
       <br>  
 
-      <h3 class="font-600 font-serif"> The Elements </h3>
+      <h3 class="font-700 font-serif"> The Elements </h3>
 
       <div class="second_p">
         <p> For the elements of the website, it will be divided up between four people. Kramptj and Tazrian will work on
@@ -47,7 +47,7 @@
       <br>  
       <br>  
 
-      <h3 class="font-600 font-serif"> The Puropose? </h3>
+      <h3 class="font-700 font-serif"> The Puropose? </h3>
 
       <div class="third_p">
         <p> We are making this project, so users can self host their images without having to rely on big tech
@@ -60,7 +60,7 @@
       <br>  
       <br>  
 
-      <h3 class="font-600 font-serif"> How is it Put Together? </h3>
+      <h3 class="font-700 font-serif"> How is it Put Together? </h3>
 
       <div class="fourth_p">
         <p> To complete this project, we will need Git & GitHub, SQL, Cloudinary, Php, Sass, CSS, Tailwind,
