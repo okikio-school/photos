@@ -1,5 +1,5 @@
 <?php 
-    include_once "./db.php";
+    include_once "partials/db.php";
 
     # Only run if the form is submitted and a user is signed in
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["image_id"]) && isset($_POST["likes"])) {

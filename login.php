@@ -19,7 +19,7 @@
             </header>
 
             <?php 
-                include_once "./db.php";
+                include_once "partials/db.php";
 
                 # If the `user_id` cookie is set the user is already logged in, so, just continue
                 if (isset($_COOKIE["user_id"])) {
@@ -73,7 +73,7 @@
                             header("Location: ./profile");
                             die();
                         else:
-                            echo "Either the email and/or the password is wrong.";
+                            echo "<span class='form-error'>Either the email and/or the password is wrong.</span>";
                         endif;
 
                         # Disconnect from database

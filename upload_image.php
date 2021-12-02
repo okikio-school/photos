@@ -19,7 +19,7 @@
             </header>
 
             <?php 
-                include_once "./db.php";
+                include_once "partials/db.php";
 
                 # Only run if the form is submitted and a user is signed in
                 if (isset($_COOKIE["user_id"]) && $_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["name"]) && isset($_POST["url"])) {

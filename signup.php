@@ -20,7 +20,7 @@
             </header>
 
             <?php 
-                include_once "./db.php";
+                include_once "partials/db.php";
 
                 # Only run if the form is submitted and an email and phone number are present 
                 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email"]) && isset($_POST["password"])) {
@@ -41,7 +41,7 @@
                             # If the email and password are present in the `users` table then warn the user
                             # Otherwise create a new row (using the info. from the form) and insert it into the `users` table
                             if ($result->fetch()):
-                                echo "That email is already in use, please try again with a different email.";
+                                echo '<span class="form-error">That email is already in use, please try again with a different email.</span>';
                             else:
                                 $sql = "INSERT INTO users (name, age, email, password) VALUES (?, ?, ?, ?)";
 

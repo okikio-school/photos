@@ -29,7 +29,7 @@
         </form>   
           
         <?php 
-            include_once "./db.php";
+            include_once "partials/db.php";
 
             # If the `user_id` cookie is set the user is already logged in, so, just continue
             if (isset($_COOKIE["user_id"])) {

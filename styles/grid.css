@@ -5,9 +5,26 @@
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
 }
 
+.grid div {
+  position: relative;
+}
+
 .grid img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   vertical-align: bottom;
+}
+
+.grid .content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+}
+
+.grid .content a {
+  color: white;
 }

@@ -13,7 +13,8 @@
   <main>
     <div class="container">               
       <?php 
-        include_once "./db.php";
+        include_once "partials/db.php";
+          include_once "partials/images.php";
 
         # If the `email`, so, just continue
         if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search"])) {
@@ -37,9 +38,13 @@
                 if ($result = $statement->fetch()):
                     echo '<div class="grid">';
                     do {
-                      echo '<img
-                        src="' . $result["url"] . '"
-                        alt="' . $result["description"] . '" loading="lazy">';
+                      // echo '<img
+                      //   src="' . $result["url"] . '"
+                      //   alt="' . $result["description"] . '" loading="lazy">';
+                      $sql = "SELECT * FROM users WHERE id = " . $result["user_id"];
+                      $statement2 = $pdo->query($sql);
+                      $user = $statement2->fetch();
+                      images($result["name"], $result["url"], $result["description"], $user["name"], $user["email"]);
                     } while ($result = $statement->fetch());
                     echo '</div>';
                 else:

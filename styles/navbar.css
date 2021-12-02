@@ -10,6 +10,7 @@ nav::before {
   left: 0;
   width: 100%;
   padding: 0 1rem;
+  z-index: 500;
 }
 
 .navbar-container {

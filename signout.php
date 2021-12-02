@@ -12,9 +12,9 @@
 
   <main>
     <div class="container">
-      <h1 class="text-center">You're now Signed out!</h1>      
+      <h1 class="text-center font-700">You're now Signed out!</h1>      
       <?php 
-          include_once "./db.php";
+          include_once "partials/db.php";
           if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_COOKIE['user_id'])) {
             unset($_COOKIE['user_id']);
             setcookie('user_id', '', time() - 3600, './'); // empty value and old timestamp

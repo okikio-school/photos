@@ -18,8 +18,24 @@ html {
   font-family: "Playfair Display", serif;
 }
 
+.font-500 {
+  font-weight: 500;
+}
+
 .font-600 {
   font-weight: 600;
+}
+
+.font-700 {
+  font-weight: 700;
+}
+
+.font-800 {
+  font-weight: 800;
+}
+
+.form-error {
+  color: rgb(235, 33, 33);
 }
 
 .text-center {
@@ -48,6 +64,7 @@ html {
   display: flex;
   gap: 0.5rem;
   cursor: pointer;
+  align-items: center;
 }
 
 .btn,
@@ -78,8 +95,13 @@ html {
   color: black;
 }
 
+.already-friends {
+  background-color: rgb(103, 86, 255);
+}
+
 .cloudinary-button:hover,
-.navbar .cloudinary-button:hover {
+.navbar .cloudinary-button:hover,
+.already-friends:hover {
   background-color: rgb(61, 40, 255);
   box-shadow: none;
 }
@@ -87,4 +109,36 @@ html {
 #upload_widget {
   border-radius: 0.25rem;
   height: 5rem;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.back-to-profile {
+  transition: text-decoration ease 0.35s;
+  text-decoration: 2px underline black;
+  text-underline-offset: 0.5rem;
+  display: inline-block;
+}
+
+.back-to-profile div {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.back-to-profile svg {
+  width: 1.25em;
+}
+
+.back-to-profile:hover svg {
+  color: rgb(61, 40, 255);
+}
+
+.back-to-profile,
+.back-to-profile:hover,
+.back-to-profile:focus {
+  color: black;
 }
