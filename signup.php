@@ -85,6 +85,7 @@
                 }
             ?>
             
+            #registering account
             <!-- Using post so signup information is not present in the URL -->
             <form method="post">
                 <fieldset>
