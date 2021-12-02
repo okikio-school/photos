@@ -1,63 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
     <head>
-        <meta charset = "UTF-8">
-        <title> Registration Form </title>
-        <link rel="stylesheet" href="style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <meta charset = "UTF-8"/>
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0"/>
+        <title> Register Form </title>
+        <link rel = "stylesheet" type = "text/css" href = "styles/reg.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     </head>
-
     <body>
-        <div class="container">
-            <div class="title">Registration</div>
-            <form action="#">
-                <div class="user-details">
-                    <div class="input-box">
-                        <span class="details">Full Name</span>
-                        <input type="text" placeholder="Enter your full name" required>
-                    </div>
+        
+        <form>
 
-                    <div class="input-box">
-                        <span class="details">Username</span>
-                        <input type="text" placeholder="Enter your username" required>
-                    </div>
+            <div class = "register-container">
 
-                    <div class="input-box">
-                        <span class="details">Email</span>
-                        <input type="text" placeholder="Enter your email" required>
-                    </div>
-
-                    <div class="input-box">
-                        <span class="details">Password</span>
-                        <input type="text" placeholder="Enter your password" required>
-                    </div>
-
-                    <div class="input-box">
-                        <span class="details">Confirm Password</span>
-                        <input type="text" placeholder="Confirm your password" required>
-                    </div>
-
-                    <div class="gender-details">
-                        <span class="gender-title">Gender</span>
-                        <div class="category">
-                            <label for="">
-                                <span class="dot one"></span>
-                                <span class="gender">Male</span>
-                            </label>
-
-                            <label for="">
-                                <span class="dot one"></span>
-                                <span class="gender">Female</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="button">
-                        <input type="submit" value = Register>
-                    </div>
+                <div class = "register-container-description">
+                    <h1> Join us </h1>
+                    <p> Sign up to get into the art community </p>
                 </div>
-            </form>
-        </div>
+
+                <div class = "register-container-inputs">
+                    <input type = "text" placeholder = "Pick a username">
+                    <input type = "email" placeholder = "Type your email address">
+                    <input type = "password" placeholder = "Type your password">
+                </div>
+
+                <div class = "register-container-button">
+                    <button type = "button">
+                        Register
+                    </button>
+                </div>
+
+                <div class = "register-container-login">
+                    <small> Already have an account? <a href = "login.html"> Login </a></small>
+                </div>
+
+            </div>
+
+        </form>
+
+
     </body>
 </html>
