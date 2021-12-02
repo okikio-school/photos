@@ -1,0 +1,55 @@
+.first_p{
+    text-align: justify;
+}
+
+.second_p{
+    text-align: justify;
+}
+
+.third_p{
+    text-align: justify;
+}
+
+.fourth_p{
+    text-align: justify;
+}
+
+#description{
+  margin: 30px;
+  font: 
+}
+
+
+
+.first_p{
+
+  border: solid;
+  border-color: #ffe08b;
+  padding: 5px 5px 5px 5px;
+ 
+}
+
+.third_p{
+   border: solid;
+  border-color: #ffe08b;
+  padding: 5px 5px 5px 5px;
+  border-radius: 5px;
+  
+}
+
+.second_p{
+  border: solid;
+  border-color: #ffe08b;
+  padding: 5px 5px 5px 5px;
+  border-radius: 5px;
+  
+}
+
+.fourth_p{
+  border: solid;
+  border-color: #ffe08b;
+  padding: 5px 5px 5px 5px;
+  border-radius: 5px;
+  
+  
+}
