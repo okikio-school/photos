@@ -12,7 +12,7 @@
 
   <main>
     <div class="container">
-      <h1>Grid</h1>      
+      <h1>The Grid</h1>      
       <?php 
           include_once "partials/db.php";
           include_once "partials/images.php";

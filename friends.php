@@ -71,7 +71,7 @@
                                 # If the user_id is present in the `users` table then the iser is already logged in
                                 if ($user = $statement2->fetch()):
                                     echo '<div>
-                                        <h3>
+                                        <h3 class="username">
                                             <a href="./profile?email=' . $user["email"] . '">' . $user["name"] . '</a>
                                         </h3>
                                         <br>
@@ -103,7 +103,7 @@
                                 # If the user_id is present in the `users` table then the iser is already logged in
                                 if ($user = $statement2->fetch()):
                                     echo '<div>
-                                        <h3>
+                                        <h3 class="username">
                                             <a href="./profile?email=' . $user["email"] . '">' . $user["name"] . '</a>
                                         </h3>
                                         <br>
@@ -174,7 +174,7 @@
                             # If the user_id is present in the `users` table then the iser is already logged in
                             if ($user = $statement2->fetch()):
                                 echo '<div>
-                                    <h3>
+                                    <h3 class="username">
                                         <a href="./profile?email=' . $user["email"] . '">' . $user["name"] . '</a>
                                     </h3>
                                     <br>
@@ -206,7 +206,7 @@
                             # If the user_id is present in the `users` table then the iser is already logged in
                             if ($user = $statement2->fetch()):
                                 echo '<div>
-                                    <h3>
+                                    <h3 class="username">
                                         <a href="./profile?email=' . $user["email"] . '">' . $user["name"] . '</a>
                                     </h3>
                                     <br>

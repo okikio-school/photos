@@ -64,7 +64,10 @@
                     echo '<div class="grid">';
                     do {
                       echo '<div>
-                        <h4>' . $result["name"] . '</h4>
+                        <h4 class="username">
+                            <a href="./profile?email=' . $result["email"] . '">' . $result["name"] . '</a>
+                        </h4>
+                        <br>
                         <p>' . $result["email"] . '</p>
                       </div>';
                     } while ($result = $statement->fetch());

@@ -9,6 +9,16 @@
   position: relative;
 }
 
+.grid .username a,
+.grid .username a:visited,
+.grid .username a:focus {
+  color: black;
+}
+
+.grid .username a:focus {
+  color: rgb(77, 74, 82);
+}
+
 .grid img {
   width: 100%;
   height: 100%;
