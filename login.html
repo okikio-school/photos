@@ -3,7 +3,10 @@
 
     <head>
         <meta charset = "UTF-8">
+          <meta name = "viewport" content = "width=device-width, initial-scale=1.0"/>
         <title> Login </title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="styles/login.css">
     </head>
 
@@ -17,13 +20,13 @@
                 
                 
                 <div class="text_field">
-                    <input type="text" required>
+                    <input type="text" placeholder = "Username"required>
                     <span></span>
                     <label>Username</label>
                 </div>
 
                 <div class="text_field">
-                    <input type = "password" required>
+                    <input type = "password" placeholder = "Password"required>
                     <span></span>
                     <label>Password</label>
                 </div>
@@ -32,7 +35,8 @@
                 <input type="submit" value="Login">
 
                 <div class="signup">
-                    <a href="registration.html">Need a new account?</a>
+                     <small> Need a new account? <a href="registration.html"> Sign Up Here. </a></small>
+                    
                 </div>
             </form>
         </div>
