@@ -35,7 +35,7 @@
                             $password = $pdo->quote($_POST['password']);
                             
                             # Check if the email and password from the form submission are already present in the `users` table
-                            $sql = "SELECT id, email, password FROM users WHERE email = " . $email . " AND password = " . $password;
+                            $sql = "SELECT id, email, password FROM users WHERE email = " . trim($email) . " AND password = " . trim($password);
                             $result = $pdo->query($sql);
                             
                             # If the email and password are present in the `users` table then warn the user
@@ -70,8 +70,7 @@
                                 $statement = null;
                                 
                                 # Redirect to profile page
-                                header("Location: ./profile?email=" . $email);
-                                die(); // This is due 
+                                header("Location: ./profile?email=" . trim($email));
                             endif;
                         } catch (PDOException $e) {
                             $pdo->rollback();

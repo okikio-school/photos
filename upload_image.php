@@ -15,8 +15,7 @@
     <main class="signup">
         <div class="container">
             <header>
-                <h1 class="font-serif"> Join us </h1>
-                <p> Sign up to get into the art community </p>
+                <h1 class="font-serif"> Upload image </h1>
             </header>
 
             <?php 
@@ -72,7 +71,7 @@
             ?>
             
             <!-- Using post so signup information is not present in the URL -->
-            <form method="post">
+            <form>
                 <fieldset>
                     <input type="text" name="name" required />
                     <label for="name">Name</label>
@@ -88,19 +87,10 @@
                     <label for="tags">Tags</label>
                 </fieldset>
 
-                <fieldset>
-                    <input type="number" name="age" required />
-                    <label for="age">Age</label>
-                </fieldset>
-
-                <button type="submit">
-                    Register
+                <button id="upload_widget"  class="cloudinary-button">
+                    Upload Image
                 </button>
             </form>
-
-            <div class="register-container-login">
-                <small> Already have an account? <a href="./login"> Login </a></small>
-            </div>
         </div>
     </main>
 

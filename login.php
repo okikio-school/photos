@@ -32,7 +32,7 @@
                         $user_id = $pdo->quote($_COOKIE["user_id"]);
                         
                         # Check if the user_id from the cookie is already present in the `users` table
-                        $sql = "SELECT * FROM users WHERE id = " . $user_id;
+                        $sql = "SELECT * FROM users WHERE id = " . trim($user_id);
                         $result = $pdo->query($sql);
                         
                         # If the user_id is present in the `users` table then the iser is already logged in
@@ -61,13 +61,16 @@
                         $password = $pdo->quote($_POST['password']);
                         
                         # Check if the email and password from the form submission are already present in the `users` table
-                        $sql = "SELECT * FROM users WHERE email = " . $email . " AND password = " . $password;
+                        $sql = "SELECT * FROM users WHERE email = " . trim($email) . " AND password = " . trim($password);
                         $result = $pdo->query($sql);
                         
                         # If the email and password are present in the `users` table then the login info is valid
                         if ($result = $result->fetch()):
                             setcookie("user_id", $result["id"], time() + 80 * 80 * 24);
-                            echo "Welcome " . $result["name"];
+                            # echo "Welcome " . $result["name"];
+                                
+                            # Redirect to profile page
+                            header("Location: ./profile?email=" . trim($email));
                         else:
                             echo "Either the email and/or the password is wrong.";
                         endif;
