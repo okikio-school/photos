@@ -41,8 +41,11 @@ nav::before {
   }
 }
 
+.navbar :is(a, button) {
+  transition: background-color ease 0.25s, color ease 0.25s;
+}
+
 .navbar a {
-  transition: background-color ease 0.25s;
   text-decoration: none;
   padding: 0.5rem 0.95rem;
   border-radius: 0.25rem;
@@ -69,6 +72,20 @@ nav::before {
   outline: 3px solid black;
 }
 
+.navbar .signup-btn {
+  background-color: #ffe08b;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.navbar .signup-btn svg {
+  width: 1.25rem;
+}
+
+.navbar .signup-btn:hover {
+  background-color: #ffefbf;
+}
+
 .navbar .flex-grow {
   flex-grow: 1;
 }
@@ -88,7 +105,7 @@ nav::before {
   flex-wrap: nowrap;
   align-items: center;
   gap: 0.25rem;
-  
+
   padding-inline-end: 0.35rem;
 }
 
@@ -122,8 +139,6 @@ nav::before {
 }
 
 .navbar form.search button {
-  transition: background-color ease 0.25s;
-
   color: rgb(0, 0, 0);
   background-color: #ffb900;
 

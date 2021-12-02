@@ -5,7 +5,7 @@
 :root {
   --container-width: 1200px;
   --accent: #ffb900;
-} 
+}
 
 html {
   /* color-scheme: dark light; */
@@ -14,9 +14,32 @@ html {
   line-height: 1.5em;
 }
 
+.font-serif {
+  font-family: "Playfair Display", serif;
+}
+
 .container {
   display: block;
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 1rem;
+}
+
+:is(a, button, input, select):focus {
+  outline: 3px solid black;
+  border-radius: var(--focus-radius, 0.25rem);
+}
+
+.cloudinary-button {
+  background-color: rgb(103, 86, 255);
+  padding: 0.5rem 0.95rem;
+  border-radius: 0.25rem;
+  line-height: 1.5;
+  border: 1px solid transparent;
+  color: black;
+}
+
+.cloudinary-button:hover {
+  background-color: rgb(61, 40, 255);
+  box-shadow: none;
 }
