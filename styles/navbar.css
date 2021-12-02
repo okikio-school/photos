@@ -125,7 +125,7 @@ nav::before {
   transition: background-color ease 0.25s;
 
   color: rgb(0, 0, 0);
-  background-color: rgb(127 171 235);
+  background-color: #ffb900;
 
   border: none;
   border-radius: var(--radius);
@@ -135,7 +135,8 @@ nav::before {
 }
 
 .navbar form.search button:hover {
-  background-color: rgb(161, 199, 255);
+  color: white;
+  background-color: black;
 }
 
 .navbar form.search button svg {
