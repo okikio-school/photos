@@ -35,13 +35,13 @@
                             $password = $pdo->quote($_POST['password']);
                             
                             # Check if the email and password from the form submission are already present in the `users` table
-                            $sql = "SELECT id, email, password FROM users WHERE email = " . trim($email) . " AND password = " . trim($password);
+                            $sql = "SELECT id, email, password FROM users WHERE email = " . trim($email);
                             $result = $pdo->query($sql);
                             
                             # If the email and password are present in the `users` table then warn the user
                             # Otherwise create a new row (using the info. from the form) and insert it into the `users` table
-                            if ($result = $result->fetch()):
-                                echo "That email is already in use, please try again with a different email.\n";
+                            if ($result->fetch()):
+                                echo "That email is already in use, please try again with a different email.";
                             else:
                                 $sql = "INSERT INTO users (name, age, email, password) VALUES (?, ?, ?, ?)";
 
@@ -70,7 +70,8 @@
                                 $statement = null;
                                 
                                 # Redirect to profile page
-                                header("Location: ./profile?email=" . trim($email));
+                                header("Location: ./profile");
+                                die();
                             endif;
                         } catch (PDOException $e) {
                             $pdo->rollback();
@@ -85,7 +86,7 @@
                 }
             ?>
             
-            #registering account
+            <br>
             <!-- Using post so signup information is not present in the URL -->
             <form method="post">
                 <fieldset>

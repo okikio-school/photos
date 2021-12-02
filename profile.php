@@ -27,33 +27,35 @@
                 
                 # Check if the user_id from the cookie is already present in the `users` table
                 $sql = "SELECT * FROM users WHERE email = " . $email;
-                $result = $pdo->query($sql);
+                $statement = $pdo->query($sql);
                 
                 # If the user_id is present in the `users` table then the iser is already logged in
-                if ($user = $result->fetch()):
+                if ($user = $statement->fetch()):
                     echo '<header>';
                     echo '<h1>' . $user["name"] . '</h1>';
-                    echo '<h3>' . $user["email"] . '</h3>';
+                    echo '<p>' . $user["email"] . '</p>';
                     echo '</header>';
+                    echo '<br>';
+                    echo '<br>';
 
                     # Check if the user_id  `users` table
                     $sql = "SELECT * FROM images WHERE `user_id` = " . $user["id"];
-                    $result = $pdo->query($sql);
+                    $statement = $pdo->query($sql);
                     
                     # If the user_id is present in the `users` table then the iser is already logged in
-                    if ($result->fetch()):
-                        echo '<div class="grid">\n';
-                        while ($result = $result->fetch()) {
-                        echo '<img
-                            src="' . $result["url"] . '"
-                            alt="' . $result["description"] . '" loading="lazy">\n';
-                        }
-                        echo '</div>\n';
+                    if ($result = $statement->fetch()):
+                        echo '<div class="grid">';
+                        do {
+                            echo '<img
+                                src="' . $result["url"] . '"
+                                alt="' . $result["description"] . '" loading="lazy">';
+                        } while ($result = $statement->fetch());
+                        echo '</div>';
                     else:
-                        echo '<div align="center">No images yet.</div>';
+                        echo '<br><div class="text-center" align="center">No images yet.</div>';
                     endif;
                 else:
-                    echo '<div align="center">Can\'t find user profile.</div>';
+                    echo '<br><div class="text-center" align="center">Can\'t find user profile.</div>';
                 endif;
                 
                 # Disconnect from database
@@ -75,33 +77,39 @@
                 
                 # Check if the user_id from the cookie is already present in the `users` table
                 $sql = "SELECT * FROM users WHERE id = " . $user_id;
-                $result = $pdo->query($sql);
+                $statement = $pdo->query($sql);
 
                 # If the user_id is present in the `users` table then the iser is already logged in
-                if ($user = $result->fetch()):
+                if ($user = $statement->fetch()):
                     # Check if the user_id from the cookie is already present in the `users` table
                     $sql = "SELECT * FROM images WHERE user_id = " . $user_id;
-                    $result = $pdo->query($sql);
-                        
-                    # If the user_id is present in the `users` table then the iser is already logged in
-                    if ($result->fetch()):
-                        echo '<header>';
-                        echo '<h1>' . $user["name"] . '</h1>';
-                        echo '<h3>' . $user["email"] . '</h3>';
-                        echo '</header>';
+                    $statement = $pdo->query($sql);
 
-                        echo '<div class="grid">\n';
-                        while ($result = $result->fetch()) {
+                    echo '<header>';
+                    echo '<h1>' . $user["name"] . '</h1>';
+                    echo '<p>' . $user["email"] . '</p>';
+                    echo '</header>';
+                    echo '<br>';
+                    echo '<form action="./signout" method="POST"> 
+                        <button class="btn" type="submit">Sign Out</button>
+                    </form>';
+                    echo '<br>';
+                    echo '<br>';
+
+                    # If the user_id is present in the `users` table then the iser is already logged in
+                    if ($result = $statement->fetch()):
+                        echo '<div class="grid">';
+                        do {
                         echo '<img
                             src="' . $result["url"] . '"
-                            alt="' . $result["description"] . '" loading="lazy">\n';
-                        }
-                        echo '</div>\n';
+                            alt="' . $result["description"] . '" loading="lazy">';
+                        } while ($result = $statement->fetch());
+                        echo '</div>';
                     else:
-                        echo '<div align="center">Can\'t find user profile.</div>';
+                        echo '<div class="text-center" align="center">No images yet.</div>';
                     endif;
                 else:
-                    echo '<div align="center">Can\'t find user profile.</div>';
+                    echo '<div class="text-center" align="center">Can\'t find user profile.</div>';
                 endif;
 
                 # Disconnect from database

@@ -1,0 +1,26 @@
+.first_p {
+  text-align: justify;
+}
+
+.second_p {
+  text-align: justify;
+}
+
+.third_p {
+  text-align: justify;
+}
+
+.fourth_p {
+  text-align: justify;
+}
+
+#description {
+  margin: 30px;
+}
+
+.first_p,
+.second_p,
+.third_p,
+.fourth_p {
+  padding-block: 0.75rem;
+}

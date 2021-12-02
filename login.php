@@ -70,7 +70,8 @@
                             # echo "Welcome " . $result["name"];
                                 
                             # Redirect to profile page
-                            header("Location: ./profile?email=" . trim($email));
+                            header("Location: ./profile");
+                            die();
                         else:
                             echo "Either the email and/or the password is wrong.";
                         endif;

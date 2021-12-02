@@ -42,8 +42,8 @@
 .signup label {
   font-size: 0.85rem;
   line-height: 1.5;
-  padding-block-end: 0.35rem;
-  padding-inline-start: 0.5rem;
+  padding-block-end: 0.65rem;
+  /* padding-inline-start: 0.5rem; */
 }
 
 .signup input:focus ~ label {
@@ -52,7 +52,9 @@
 
 .signup input:valid ~ label {
   font-style: italic;
-  font-weight: bold;
+  font-weight: 600;
+  text-decoration: 3px underline currentColor;
+  text-underline-offset: 0.35rem;
 }
 
 .signup button {
@@ -68,4 +70,5 @@
 
 .signup button:hover {
   background-color: #ffe08b;
+  box-shadow: none;
 }

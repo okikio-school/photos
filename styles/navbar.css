@@ -41,23 +41,8 @@ nav::before {
   }
 }
 
-.navbar :is(a, button) {
-  transition: background-color ease 0.25s, color ease 0.25s;
-}
-
-.navbar a {
-  text-decoration: none;
-  padding: 0.5rem 0.95rem;
-  border-radius: 0.25rem;
-  color: black;
-}
-
 .navbar a:hover {
   background-color: #ffe08b;
-}
-
-.navbar a:focus {
-  outline: 3px solid black;
 }
 
 .navbar a.active:hover {
@@ -68,7 +53,7 @@ nav::before {
   background-color: var(--accent);
 }
 
-.navbar a.active:focus {
+.navbar a:focus {
   outline: 3px solid black;
 }
 
@@ -85,6 +70,7 @@ nav::before {
 .navbar .signup-btn span {
   display: inline-block;
   width: 10ch;
+  text-align: center;
 
   overflow: hidden;
   position: relative;

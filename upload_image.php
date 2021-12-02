@@ -56,7 +56,7 @@
                             $statement = null;
 
                             # Success
-                            echo "<h2 class=\"text-center success\">Survey Completed Successfully.</h2>";
+                            echo "<h2 align='center' class=\"text-center success\">Image Uploaded Successfully.</h2>";
                         } catch (PDOException $e) {
                             $pdo->rollback();
                             throw $e;
@@ -71,7 +71,7 @@
             ?>
             
             <!-- Using post so signup information is not present in the URL -->
-            <form>
+            <form class="upload-image-form" method="POST">
                 <fieldset>
                     <input type="text" name="name" required />
                     <label for="name">Name</label>
@@ -83,17 +83,21 @@
                 </fieldset>
 
                 <fieldset>
-                    <input type="text" name="tags" />
+                    <input type="text" name="tags" required />
                     <label for="tags">Tags</label>
                 </fieldset>
 
-                <button id="upload_widget"  class="cloudinary-button">
+                <button id="upload_widget" class="cloudinary-button" type="button">
                     Upload Image
                 </button>
             </form>
+            <div class="uploaded_images grid"></div>
         </div>
     </main>
 
+    <!-- Scripts for cloudinary. Cloudinary handles the image upload and storage -->
+    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+    <script src="scripts/main.js" type="text/javascript" defer></script>
     <?php include_once "partials/scripts.php"; ?>
 </body>
 

@@ -23,19 +23,19 @@
               
               # Check if the user_id from the cookie is already present in the `users` table
               $sql = "SELECT * FROM images";
-              $result = $pdo->query($sql);
+              $statement = $pdo->query($sql);
               
-              # If the user_id is present in the `users` table then the iser is already logged in
-              if ($result->fetch()):
-                echo '<div class="grid">\n';
-                while ($result = $result->fetch()) {
+              # If the `images` table then the iser is already logged in
+              if ($result = $statement->fetch()):
+                echo '<div class="grid">';
+                do {
                   echo '<img
                     src="' . $result["url"] . '"
-                    alt="' . $result["description"] . '" loading="lazy">\n';
-                }
-                echo '</div>\n';
+                    alt="' . $result["description"] . '" loading="lazy">';
+                } while ($result = $statement->fetch());
+                echo '</div>';
               else:
-                  echo '<div align="center">No images...</div>';
+                echo '<div align="center">No images...</div>';
               endif;
 
               # Disconnect from database
