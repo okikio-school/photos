@@ -26,8 +26,6 @@
       ?>
     </div>
   </main>
-
-  <?php include_once "partials/scripts.php"; ?>
 </body>
 
 </html>

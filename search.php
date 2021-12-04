@@ -14,36 +14,35 @@
     <div class="container">               
       <?php 
         include_once "partials/db.php";
-          include_once "partials/images.php";
+        include_once "partials/images.php";
 
-        # If the `email`, so, just continue
+        # If `search` in part of a get request, continue
         if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search"])) {
             try {
                 # Create database connection
                 $pdo = new PDO(DB_CONNECTION_STRING, DB_USER, DB_PASSWORD);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                # Search query
+                # Sanitize search query
                 $query = $pdo->quote($_GET['search']);
                 echo '<h2>Search results for ' . $query . '</h2>';
                 echo '<br>';
                 echo '<h3 class="font-600">Images</h3>';
                 echo '<br>';
 
-                # Check if the user_id `images` table
+                # Check if there are image info. that match the search query
                 $sql = 'SELECT * FROM images WHERE name LIKE "%' . $_GET['search'] . '%" OR description LIKE "%' . $_GET['search'] . '%"';
                 $statement = $pdo->query($sql);
                 
-                # If the user_id is present in the `users` table then the iser is already logged in
                 if ($result = $statement->fetch()):
                     echo '<div class="grid">';
                     do {
-                      // echo '<img
-                      //   src="' . $result["url"] . '"
-                      //   alt="' . $result["description"] . '" loading="lazy">';
+                      # Get user info. for image
                       $sql = "SELECT * FROM users WHERE id = " . $result["user_id"];
                       $statement2 = $pdo->query($sql);
                       $user = $statement2->fetch();
+
+                      # Display images with user info.
                       images($result["name"], $result["url"], $result["description"], $user["name"], $user["email"]);
                     } while ($result = $statement->fetch());
                     echo '</div>';
@@ -55,11 +54,10 @@
                 echo '<h3 class="font-600">Users</h3>';
                 echo '<br>';
 
-                # Check if the user_id `images` table
+                # Check if there are user info. that match the search query
                 $sql = 'SELECT * FROM users WHERE name LIKE "%' . $_GET['search'] . '%" OR email LIKE "%' . $_GET['search'] . '%"';
                 $statement = $pdo->query($sql);
                 
-                # If the user_id is present in the `users` table then the iser is already logged in
                 if ($result = $statement->fetch()):
                     echo '<div class="grid">';
                     do {
@@ -87,8 +85,6 @@
       ?>
     </div>
   </main>
-
-  <?php include_once "partials/scripts.php"; ?>
 </body>
 
 </html>

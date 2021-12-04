@@ -1,4 +1,5 @@
 <?php 
+    # Function for generating an image
     function images($name, $url, $alt, $username, $email) {
         $userStr = "";
         if ($username && $email):

@@ -22,20 +22,20 @@
               $pdo = new PDO(DB_CONNECTION_STRING, DB_USER, DB_PASSWORD);
               $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
               
-              # Check if the user_id from the cookie is already present in the `users` table
+              # Select all images from the `images` table
               $sql = "SELECT * FROM images";
               $statement = $pdo->query($sql);
               
-              # If the `images` table then the iser is already logged in
+              # If there are images display, them, otherwise display that there are no image
               if ($result = $statement->fetch()):
                 echo '<div class="grid">';
                 do {
-                  // echo '<img
-                  //   src="' . $result["url"] . '"
-                  //   alt="' . $result["description"] . '" loading="lazy">';
+                  // Select users who have the resulting `user_id` from the images table
                   $sql = "SELECT * FROM users WHERE id = " . $result["user_id"];
                   $statement2 = $pdo->query($sql);
                   $user = $statement2->fetch();
+
+                  // Display images with user info. 
                   images($result["name"], $result["url"], $result["description"], $user["name"], $user["email"]);
                 } while ($result = $statement->fetch());
                 echo '</div>';
@@ -51,8 +51,6 @@
       ?>
     </div>
   </main>
-
-  <?php include_once "partials/scripts.php"; ?>
 </body>
 
 </html>

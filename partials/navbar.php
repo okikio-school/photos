@@ -3,6 +3,7 @@
       <div class="navbar-container">
         <!-- <img src="stoK.jpg" width="150" alt="Logo" /> --> 
         <?php
+          # Update which navbar link is active based on the request uri
           $aboutClass = "";
           $homeClass = "";
           if ($_SERVER['REQUEST_URI'] == "/photos/") {
@@ -45,9 +46,8 @@
                     $sql = "SELECT * FROM users WHERE id = " . $user_id;
                     $result = $pdo->query($sql);
                     
-                    # If the user_id is present in the `users` table then the iser is already logged in
+                    # If the user_id is present in the `users` table then the user is valid, display link to profile 
                     if ($result = $result->fetch()):
-                        // ?email=' . $result["email"]  . '
                         echo '<a class="signup-btn" href="./profile">
                           <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.754 14a2.249 2.249 0 0 1 2.25 2.249v.918a2.75 2.75 0 0 1-.513 1.599C17.945 20.929 15.42 22 12 22c-3.422 0-5.945-1.072-7.487-3.237a2.75 2.75 0 0 1-.51-1.595v-.92a2.249 2.249 0 0 1 2.249-2.25h11.501ZM12 2.004a5 5 0 1 1 0 10 5 5 0 0 1 0-10Z" fill="currentColor"/></svg>' .
                           '<span>' . $result["name"] . '</span>' . 

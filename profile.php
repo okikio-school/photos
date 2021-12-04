@@ -14,14 +14,14 @@
     <div class="container">          
       <?php 
         include_once "partials/db.php";
-          include_once "partials/images.php";
+        include_once "partials/images.php";
 
-        # If the `user_id` cookie is set the user is already logged in, so, just continue
+        # If the `user_id` cookie is set and the post request has `userB` set, then add user as a friend
         if (isset($_COOKIE["user_id"]) && isset($_POST["userB"])) {
             include_once "partials/add-friend.php";
         }
 
-        # If the `email`, so, just continue
+        # If the `email` is set display the friends list corrosponding to that email
         if (isset($_GET["email"])) {
             try {
                 # Create database connection
@@ -31,16 +31,17 @@
                 # Santize `email` input
                 $email = $pdo->quote($_GET["email"]);
                 
-                # Check if the user_id from the cookie is already present in the `users` table
+                # Check if the email matches from `users` table
                 $sql = "SELECT * FROM users WHERE email = " . $email;
                 $statement = $pdo->query($sql);
                 
-                # If the user_id is present in the `users` table then the iser is already logged in
+                # If there is a user that has that email in the `users` table then display their profile
                 if ($user = $statement->fetch()):
                     echo '<header>';
                     echo '<h1>' . $user["name"] . '</h1>';
                     echo '<p>' . $user["email"] . '</p>';
                     echo '</header>';
+
                     if (isset($_COOKIE["user_id"])) {
                         $btnText = "";
                         $btnClass = "";
@@ -48,11 +49,11 @@
                         $User_A = $pdo->quote($_COOKIE["user_id"]);
                         $User_B = $pdo->quote($user['id']);
                         
-                        # Check if the user_id from the cookie is already present in the `users` table
+                        # Check if user has any friends, if so, then display has "Already Friends" on profile, 
+                        # otherwise, display "Add as Friend"
                         $sql = "SELECT * FROM friends WHERE userA = " . $User_A . " AND userB = " . $User_B;
                         $statement = $pdo->query($sql);
 
-                        # If the user_id is present in the `users` table then the iser is already logged in
                         if ($result = $statement->fetch()):
                             $btnText = "Already Friends";
                             $btnClass = "already-friends";
@@ -71,17 +72,14 @@
                     echo '<br>';
                     echo '<br>';
 
-                    # Check if the user_id  `users` table
+                    # Select images that corrospond to the users id
                     $sql = "SELECT * FROM images WHERE `user_id` = " . $user["id"];
                     $statement = $pdo->query($sql);
                     
-                    # If the user_id is present in the `users` table then the iser is already logged in
                     if ($result = $statement->fetch()):
                         echo '<div class="grid">';
                         do {
-                            // echo '<img
-                            //   src="' . $result["url"] . '"
-                            //   alt="' . $result["description"] . '" loading="lazy">';
+                            # Display images with user info.
                             images($result["name"], $result["url"], $result["description"], $user["name"], $user["email"]);
                         } while ($result = $statement->fetch());
                         echo '</div>';
@@ -115,10 +113,6 @@
 
                 # If the user_id is present in the `users` table then the iser is already logged in
                 if ($user = $statement->fetch()):
-                    # Check if the user_id from the cookie is already present in the `users` table
-                    $sql = "SELECT * FROM images WHERE user_id = " . $user_id;
-                    $statement = $pdo->query($sql);
-
                     echo '<header>';
                     echo '<h1>' . $user["name"] . '</h1>';
                     echo '<p>' . $user["email"] . '</p>';
@@ -131,16 +125,14 @@
                     echo '<br>';
                     echo '<br>';
 
-                    # If the user_id is present in the `users` table then the iser is already logged in
+                    # Select the images corrosponding to the `user_id`
+                    $sql = "SELECT * FROM images WHERE user_id = " . $user_id;
+                    $statement = $pdo->query($sql);
+
                     if ($result = $statement->fetch()):
                         echo '<div class="grid">';
                         do {
-                            // echo '<img
-                            //   src="' . $result["url"] . '"
-                            //   alt="' . $result["description"] . '" loading="lazy">';
-                            $sql = "SELECT * FROM users WHERE id = " . $result["user_id"];
-                            $statement2 = $pdo->query($sql);
-                            $user = $statement2->fetch();
+                            # Display images with user info.
                             images($result["name"], $result["url"], $result["description"], $user["name"], $user["email"]);
                         } while ($result = $statement->fetch());
                         echo '</div>';

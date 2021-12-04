@@ -15,17 +15,18 @@
       <?php 
         include_once "partials/db.php";
 
-        # If the `user_id` cookie is set the user is already logged in, so, just continue
+        # If the `user_id` cookie is set and the post request has `userB` set, then add user as a friend
         if (isset($_COOKIE["user_id"]) && isset($_POST["userB"])) {
             include_once "partials/add-friend.php";
         }
 
+        # Show `Remove Friend` button if user is signed in
         $btn = "";
         if (isset($_COOKIE["user_id"])):
             $btn = '<button class="btn already-friends" type="submit">Remove Friend</button>';
         endif;
 
-        # If the `email`, so, just continue
+        # If the `email` is set display the friends list corrosponding to that email
         if (isset($_GET["email"])) {
             try {
                 # Create database connection
@@ -35,11 +36,11 @@
                 # Sanitize email
                 $email = $pdo->quote($_GET['email']);
 
-                # Check if the user_id `images` table
+                # Check if the email matches from `users` table
                 $sql = "SELECT * FROM users WHERE email = " . $email;
                 $statement = $pdo->query($sql);
                 
-                # If the user_id is present in the `users` table then the iser is already logged in
+                # If there is a user that has that email in the `users` table then display their friends
                 if ($userA = $statement->fetch()):
                     echo '<a href="./profile?email=' . $userA['email'] . '" class="back-to-profile">
                         <div>
@@ -51,24 +52,24 @@
                     echo '<br>';
                     echo '<br>';
 
-                    # Check if the user_id `images` table
+                    # Make sure userA has friends or that someone else is friends with userA
                     $sql = "SELECT * FROM friends WHERE userA = " . $userA['id'] . " OR userB = " . $userA['id'];
                     $statement = $pdo->query($sql);
 
+                    # Get all the friends of the current user
                     if ($statement->fetch()):
                         echo '<div class="grid">';
-                        # Check if the user_id from the cookie is already present in the `users` table
+
+                        # Display all users that userA has added as friends 
                         $sql = "SELECT * FROM friends WHERE userA = " . $userA['id'];
                         $statement = $pdo->query($sql);
                         $result = $statement->fetch();
 
                         if ($result):
                             do {
-                                # Check if the user_id from the cookie is already present in the `users` table
                                 $sql = "SELECT * FROM users WHERE id = " . $result['userB'];
                                 $statement2 = $pdo->query($sql);
                                 
-                                # If the user_id is present in the `users` table then the iser is already logged in
                                 if ($user = $statement2->fetch()):
                                     echo '<div>
                                         <h3 class="username">
@@ -89,18 +90,16 @@
                             } while ($result = $statement->fetch());
                         endif;
 
-                        # Check if the user_id from the cookie is already present in the `users` table
+                        # Display all users that have added userA as their friend
                         $sql = "SELECT * FROM friends WHERE userB = " . $userA['id'];
                         $statement = $pdo->query($sql);
                         $result = $statement->fetch();
 
                         if ($result):
                             do {
-                                # Check if the user_id from the cookie is already present in the `users` table
                                 $sql = "SELECT * FROM users WHERE id = " . $result['userA'];
                                 $statement2 = $pdo->query($sql);
                                 
-                                # If the user_id is present in the `users` table then the iser is already logged in
                                 if ($user = $statement2->fetch()):
                                     echo '<div>
                                         <h3 class="username">
@@ -149,29 +148,28 @@
                 $pdo = new PDO(DB_CONNECTION_STRING, DB_USER, DB_PASSWORD);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                # Santize `user_id` input
+                # Santize input
                 $user_id = $pdo->quote($_COOKIE["user_id"]);
                 
-                # Check if the user_id from the cookie is already present in the `users` table
+                # Make sure userA (signed in user) has friends or that someone else is friends with them
                 $sql = "SELECT * FROM friends WHERE userA = " . $user_id . " OR userB = " . $user_id;
                 $statement = $pdo->query($sql);
 
-                # If the user_id is present in the `users` table then the iser is already logged in
                 if ($statement->fetch()):
                     echo '<div class="grid">';
-
-                    # Check if the user_id from the cookie is already present in the `users` table
+                    
+                    # Select all users that userA (signed in user) has added as friends 
                     $sql = "SELECT * FROM friends WHERE userA = " . $user_id;
                     $statement = $pdo->query($sql);
                     $result = $statement->fetch();
 
                     if ($result):
                         do {
-                            # Check if the user_id from the cookie is already present in the `users` table
+                            # Check if the user id from the friend (`userB`) is present in `users` table
                             $sql = "SELECT * FROM users WHERE id = " . $result["userB"]; 
                             $statement2 = $pdo->query($sql);
                             
-                            # If the user_id is present in the `users` table then the iser is already logged in
+                            # If the it is, display all friends of userA (signed in user)
                             if ($user = $statement2->fetch()):
                                 echo '<div>
                                     <h3 class="username">
@@ -192,18 +190,18 @@
                         } while ($result = $statement->fetch());
                     endif;
 
-                    # Check if the user_id from the cookie is already present in the `users` table
+                    # Select all users that userB (signed in user) has added as friends
                     $sql = "SELECT * FROM friends WHERE userB = " . $user_id;
                     $statement = $pdo->query($sql);
                     $result = $statement->fetch();
 
                     if ($result):
                         do {
-                            # Check if the user_id from the cookie is already present in the `users` table
+                            # Check if the user id from the friend (`userA`) is present in `users` table
                             $sql = "SELECT * FROM users WHERE id = " . $result["userA"]; 
                             $statement2 = $pdo->query($sql);
                             
-                            # If the user_id is present in the `users` table then the iser is already logged in
+                            # If the it is, display all friends of userB (signed in user)
                             if ($user = $statement2->fetch()):
                                 echo '<div>
                                     <h3 class="username">
@@ -239,8 +237,6 @@
       ?>
     </div>
   </main>
-
-  <?php include_once "partials/scripts.php"; ?>
 </body>
 
 </html>

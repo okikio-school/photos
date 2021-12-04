@@ -67,7 +67,6 @@
                         # If the email and password are present in the `users` table then the login info is valid
                         if ($result = $result->fetch()):
                             setcookie("user_id", $result["id"], time() + 80 * 80 * 24);
-                            # echo "Welcome " . $result["name"];
                                 
                             # Redirect to profile page
                             header("Location: ./profile");
@@ -106,8 +105,6 @@
             </div>
         </div>
     </main>
-
-    <?php include_once "partials/scripts.php"; ?>
 </body>
 
 </html>
